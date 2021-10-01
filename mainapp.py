@@ -1,11 +1,12 @@
 from flask import Flask
 from flask import jsonify
+import os
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-   response = {"message":"Hello World!"}
+   response = {"name": os.getenv('NAME', 'variable not set') }
    return jsonify(response)
 
 if __name__ == "__main__":

@@ -1,11 +1,4 @@
 FROM nginx:1.13.12-alpine
 
-COPY . ./
-COPY . .
-RUN ls -als
-
-RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \ 
-chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
-
-COPY ./dist/auth/ /usr/share/nginx/html/
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
+ADD default.conf /etc/nginx/conf.d/
+ADD index.html script.js /usr/share/nginx/html/
